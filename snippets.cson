@@ -1,21 +1,445 @@
-# Your snippets
-#
-# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
-# expand the prefix into a larger code block with templated values.
-#
-# You can create a new snippet in this file by typing "snip" and then hitting
-# tab.
-#
-# An example CoffeeScript snippet to expand log to console.log:
-#
-# '.source.coffee':
-#   'Console log':
-#     'prefix': 'log'
-#     'body': 'console.log $1'
-#
-# Each scope (e.g. '.source.coffee' above) can only be declared once.
-#
-# This file uses CoffeeScript Object Notation (CSON).
-# If you are unfamiliar with CSON, you can read more about it in the
-# Atom Flight Manual:
-# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+#---------------------------------------------------------------------
+# These are my fucking snippets
+#---------------------------------------------------------------------
+
+'.source.cson, .source.coffee':
+  # Snippet for create snippets
+  # ------------------------------------------------------------------
+  'Create a snippet width simple mark qoutation':
+    'prefix': 'snippetsim'
+    'description': 'Create a snippet width simple mark qoutation'
+    'body': """
+
+    '${1:"Snippet name"}':
+      'description': '${1:"Snippet name"}'
+      'prefix': '${2:"prefix"}'
+      'body': '${3:"put your body here"}'
+
+    """
+  # ------------------------------------------------------------------
+
+  #---------------------------------------------------------------------
+  # Another snippet for create snippet with double mark qoutation
+  #---------------------------------------------------------------------
+  'Create snippet':
+    'prefix': 'snippetdoble'
+    'description': 'Create a snippet with doble mark qoutation'
+    'rightLabelHTML': 'Double mark qoutation ""'
+    'body': """
+
+    '${1:'Snippet name'}':
+      'description': '${1:"Snippet name"}'
+      'prefix': '${2:'your great combinations'}'
+      'body': \"""
+      ${3:'Put your body here'}
+      \"""
+
+    """
+  # ------------------------------------------------------------------
+
+
+  'Create a key val for snippets':
+    'description': 'Create a key val for snippets'
+    'prefix': 'kvsnip'
+    'body': """
+    '${1:"key"}': '${2:"val"}'${3}
+    """
+
+
+
+  # Create comments inside cson sources
+  # ------------------------------------------------------------------
+  'Comment with title':
+    'prefix': 'comtitle'
+    'body': """
+    #---------------------------------------------------------------------
+    # ${1:}
+    #---------------------------------------------------------------------${2:}
+    """
+
+  'Comment with line':
+    'prefix': 'comline'
+    'body': """
+    # ${1: "Text"}
+    # ------------------------------------------------------------------${2:}
+    """
+
+
+  'separator':
+    'prefix': 'separator'
+    'description': 'Put a simple line as separator'
+    'body': """
+    # ------------------------------------------------------------------${1:}
+    """
+
+  # Helper for create the steps in the snippets
+  # ------------------------------------------------------------------
+  'Steps with double qoutation mark':
+    'prefix': 'numdoble'
+    'body': """
+    ${${1:'Number'}:"${2:key}"}${3:}
+    """
+
+  'Steps with simple qoutation mark':
+    'prefix': 'numsimple'
+    'body': """${${1:'Number'}:'${2:key}'}${3:}"""
+
+
+
+#---------------------------------------------------------------------
+# Snippets for sass files
+#---------------------------------------------------------------------
+'.source.sass':
+  # Snippets for create comments
+  # ------------------------------------------------------------------
+  'linedoc':
+    'prefix': 'linedoc'
+    'body':"""
+    /* -----------------------------------------------------------------------------
+      ${1:}
+      ----------------------------------------------------------------------------- */${2:}
+    """
+
+
+
+#---------------------------------------------------------------------
+# Snippets for php files
+#---------------------------------------------------------------------
+'.source.php':
+  # Snippets for create structures
+  # ------------------------------------------------------------------
+  'Structure for if':
+    'prefix': 'if'
+    'body':"""
+      if ($1)
+      {
+        $2
+      }
+    """
+
+  'Structure for if and else':
+    'prefix': 'ifel'
+    'body': """
+      if (${1:true})
+      {
+        $2
+      }
+      else
+      {
+        $3
+      }
+    """
+
+  'Structure for else':
+    'prefix': 'else'
+    'body':"""
+      else
+      {
+        ${1://Código...}
+      }
+    """
+
+  'Structure foreach':
+    'prefix':'foreach'
+    'body':"""
+    foreach ($${1:'variable'} as $${2:'key'})
+    {
+      ${3://# code...}
+    }
+    """
+
+  'Key and value':
+    'prefix':'kv'
+    'body':"""
+    '$1' => $2,$3
+    """
+
+  'Assign value to data variable':
+    'prefix':'dataval'
+    'body':"""
+    $data['$1'] = "$2";$3
+    """
+
+  'Create an structure for array':
+    'prefix':'arrayName'
+    'body':"""
+    $${1:arrayName} = array(
+      kv${2:'//Delete this and press tab'});
+    """
+
+  'Short if':
+    'prefix': 'if?'
+    'body': '$${1:"retVal"} = ${2:"condition"} ? ${3:"a"} : ${4:"b"};${5}'
+
+
+  # Snippets for create comments
+  # ------------------------------------------------------------------
+  'Create a comment with a title and description':
+    'prefix': 'comtitle'
+    'body': """
+    /*
+    |-------------------------------------------------------------------
+    | ${1:title}
+    |-------------------------------------------------------------------
+    |
+    | ${2:description}
+    |
+    */
+    ${3}"""
+
+  'Comment with a line':
+    'prefix':'comline'
+    'body':'// -----------------------------------------------------------------$1'
+
+  # Use of this
+  # ------------------------------------------------------------------
+  'Load the this keyword':
+    'prefix': 'this'
+    'body': '$this->${1:thing}'
+
+  'Assing a value to attribute with this':
+    'prefix': 'tval'
+    'body': '$this->${1:Attribute} = "${2:"Value"}";${3}'
+
+  'Assign value to an attribute using the "this" prefix':
+    'prefix': 'tassig'
+    'body': '$this->${1:Class}->${2:Attribute} = "${3:key}"${4}'
+
+  'Call an attribute from a class using the "this" prefix':
+    'prefix': 'tcall'
+    'body': '$this->${1:Class}->${2:Attribute}${3}'
+
+
+  # Snippets for codeigniter
+  # ------------------------------------------------------------------
+  'CI, create structure for CI variable':
+    'prefix': 'cici'
+    'body': '$this->CI->$1'
+
+  'CI, call a function $this->CI->Class->Func()':
+    'prefix': 'cicicall'
+    'body': '$this->CI->${1:Class}->${2:Function}("${3:Arguments}");$4'
+
+  'CI, call a function without CI $this->Class->Func()':
+    'prefix': 'cicall'
+    'body': '$this->${1:Class}->${2:Function}(${3:"Arguments"});${4}'
+
+  'Create de defined base path':
+    'prefix':'cidefpath'
+    'body':"""
+
+    defined(${1:'BASEPATH'}) OR exit(${2:'No direct script access allowed'});
+    $3
+    """
+
+  'CI, structure $this->db->from()':
+    'prefix':'cidbfrom'
+    'body':"""
+    $this->db->from($1);$2
+    """
+
+  'CI load a view width 1 parameter':
+    'prefix':'ciview'
+    'body':"""
+    $this->load->view(${1:'//arguments'});${2:}
+    """
+
+  'CI, load a library':
+    'prefix': 'ciloadli'
+    'body': '$this->load->library("${1: library}");${2}'
+
+#---------------------------------------------------------------------
+# Snippets for html
+#---------------------------------------------------------------------
+'.text.html':
+  'New component':
+    'prefix': 'newcom'
+    'body': """
+    <!-- ${1:'Name of component'} -->
+    <${2:'name'} class="${3:'class name'}">
+      ${4}
+    </${2:'name'}>
+    <!--/${1:'Name of component'} -->
+    """
+    'description': "Nuevo componente este texto llega hasta la verga"
+
+  'Component width id and class':
+    'prefix': 'newcom.ic'
+    'body': """
+    <!-- ${1:'Name of component'} -->
+    <${2:'name'} id="${3:'id name'}" class="${4:'class name'}">
+      ${5}
+    </${2:'name'}>
+    <!--/${1:'Name of component'} -->
+    """
+
+  'Component with only id':
+    'prefix': 'newcom.i'
+    'body': """
+    <!-- ${1:'Name of component'} -->
+    <${2:'name'} id="${3:'id name'}">
+      ${4}
+    </${2:'name'}>
+    <!--/${1:'Name of component'} -->
+    """
+
+  'Component with only class':
+    'prefix': 'newcom.c'
+    'body': """
+    <!-- ${1:'Name of component'} -->
+    <${2:'name'} id="${3:'your class here'}">
+      ${4}
+    </${2:'name'}>
+    <!--/${1:'Name of component'} -->
+    """
+
+#---------------------------------------------------------------------
+# Components for Vue js
+#---------------------------------------------------------------------
+
+  # v-for directive
+  # ------------------------------------------------------------------
+  'v-for element':
+    'prefix': 'v-for'
+    'body': """
+    <${1:'element'} v-for="${2:'val'} in ${3:'values'}">
+      ${4}
+    </${1:'element'}>
+    """
+
+  'v-for element':
+    'prefix': 'v-for.inline'
+    'body': """
+    <${1:'element'} v-for="${2:'val'} in ${3:'values'}"> ${4} </${1:'element'}>
+    """
+
+  'v-for with class':
+    'prefix': 'v-for.c'
+    'body': """
+    <${1:'element'} v-for="${2:'val'} in ${3:'values'}'" class="${4}">
+      ${5}
+    </${1:'element'}>
+    """
+
+  'v-for with id':
+    'prefix': 'v-for.id'
+    'body': """
+    <${1:'element'} v-for="${2:'val'} in ${3:'values'}" id="${4}">
+      ${5}
+    </${1:'element'}>
+    """
+
+  'v-for with id and class':
+    'prefix': 'v-for.ic'
+    'body': """
+    <${1:'element'} v-for="${2:'val'} in ${3:'values'}" id="${4:'your id'}" class="${5:'your class'}">
+      ${6}
+    </${1:'element'}>
+    """
+
+  'v-for with another data':
+    'prefix': 'v-for.d'
+    'body': """
+    <${1:'element'} v-for="${2:'val'} in ${3:'values'}" ${4}>
+      ${5}
+    </${1:'element'}>
+    """
+
+  # v-if directive
+  # ------------------------------------------------------------------
+  'v-if element':
+    'prefix': 'v-if'
+    'body': """
+    <${1:'element'} v-if="${2:'condition'}">
+      ${4}
+    </${1:'element'}>
+    """
+
+  'v-if with class':
+    'prefix': 'v-if.c'
+    'body': """
+    <${1:'element'} v-if="${2:'condition'}'" class="${4}">
+      ${5}
+    </${1:'element'}>
+    """
+
+  'v-if with id':
+    'prefix': 'v-if.id'
+    'body': """
+    <${1:'element'} v-if="${2:'condition'}" id="${4}">
+      ${5}
+    </${1:'element'}>
+    """
+
+  'v-if with id and class':
+    'prefix': 'v-if.ic'
+    'body': """
+    <${1:'element'} v-if="${2:'condition'}" id="${3:'your id'}" class="${4:'your class'}">
+      ${5}
+    </${1:'element'}>
+    """
+
+  'v-if with another data':
+    'prefix': 'v-if.d'
+    'body': """
+    <${1:'element'} v-if="${2:'condition'}" ${4}>
+      ${5}
+    </${1:'element'}>
+    """
+
+  # v-on directive
+  # ------------------------------------------------------------------
+  'v-on element':
+    'prefix': 'v-on'
+    'body': """
+    <${1:'element'} v-on:${2:'event'}="${3:'function'}">
+      ${4}
+    </${1:'element'}>
+    """
+
+  # v-model directive
+  # ------------------------------------------------------------------
+  'v-model with input element':
+    'prefix': 'v-model'
+    'body': '<input v-model="${2:"model name"}" ${3}>${4}'
+
+  # templates
+  # ------------------------------------------------------------------
+  'Create a new vue template':
+    'prefix': 'newtemplate'
+    'body': """
+    <!-- ${1:'Put a comment'} -->
+    <${2:'template name'}></${2:'template name'}>${3}
+    """
+
+#---------------------------------------------------------------------
+# Snippets for vue in javascript
+#---------------------------------------------------------------------
+'.source.js':
+  'New instance of Vue':
+    'prefix': 'newvue'
+    'body': """
+    var app = new Vue({
+      el: '${1:'element'}',
+
+      data: {
+        ${2:'Write your data'}
+      }
+    });
+    """
+
+  # Structure for components
+  # ------------------------------------------------------------------
+  'New component':
+    'prefix': 'newcomvue'
+    'body': """
+    Vue.component('${1:'component name'}', {
+      template: '${2:'your template'}',
+
+      data: function() {
+        return {
+          ${3}
+        }
+      }
+    });
+    """
